@@ -1,7 +1,3 @@
-from app.models import Vote
-import pytest
-
-
 import pytest
 from app.models import Vote
 
@@ -28,7 +24,6 @@ def test_vote(test_user, test_posts, session):
     session.add(vote)
     session.commit()
     return vote
-
 
 
 def test_user_can_vote_post_twice(authorized_client, test_vote, test_user, test_posts):
