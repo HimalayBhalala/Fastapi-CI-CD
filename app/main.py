@@ -25,4 +25,3 @@ app.include_router(vote.router)
 @app.get("/", status_code=status.HTTP_200_OK)
 def hello():
     return {"message": "Hello World"}
-

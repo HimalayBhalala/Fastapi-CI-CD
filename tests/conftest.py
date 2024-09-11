@@ -47,41 +47,40 @@ def authorized_client(client, test_token):
 
 
 @pytest.fixture
-def test_posts(client,session,test_user,test_user1):
+def test_posts(client, session, test_user, test_user1):
     post_data = [
         {
-            "id":1001,
+            "id": 1001,
             "title": "First Title",
             "content": "This is a very good first post",
             "owner_id": test_user.get("id")
         },
         {
-            "id":1002,
+            "id": 1002,
             "title": "Second Title",
             "content": "This is a very famous second post",
             "owner_id": test_user.get("id")
         },
         {
-            "id":1003,
+            "id": 1003,
             "title": "Third Title",
             "content": "This is a very shown post",
             "owner_id": test_user.get("id")
         },
         {
-            "id":1004,
+            "id": 1004,
             "title": "Four Title",
             "content": "This is a very good post",
             "owner_id": test_user1.get("id")
-        },]
+        }
+    ]
 
     def create_user_post(post):
         return Post(**post)
-    
+
     post_map = map(create_user_post, post_data)
     posts = list(post_map)
     session.add_all(posts)
     session.commit()
     all_posts = session.query(Post).all()
-
     return all_posts
-

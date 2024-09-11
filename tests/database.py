@@ -20,7 +20,6 @@ TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engin
 def session():
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
-    
     db = TestingSessionLocal()
     try:
         yield db
@@ -36,6 +35,4 @@ def client(session):
         finally:
             session.close()
     app.dependency_overrides[get_db] = override_get_db
-    
     yield TestClient(app)
-

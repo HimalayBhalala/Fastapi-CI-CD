@@ -16,4 +16,3 @@ class AllSettings(BaseSettings):
 
 
 settings = AllSettings()
-

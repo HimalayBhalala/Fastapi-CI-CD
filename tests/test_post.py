@@ -90,4 +90,3 @@ def test_delete_post_unauthenticated_user(client, test_posts):
 def test_delete_other_authenticated_user(authorized_client, test_posts):
     res = authorized_client.delete(f'/posts/{test_posts[3].id}')
     assert res.status_code == 403
-
