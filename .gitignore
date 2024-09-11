@@ -1,3 +1,6 @@
 __pycache__
 .env
 fast_venv/
+
+# Local Netlify folder
+.netlify

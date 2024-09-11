@@ -1,10 +1,8 @@
 from fastapi import FastAPI,status
 from fastapi.middleware.cors import CORSMiddleware
-from . import models
-from .database import engine
-from app.router import post,auth,vote,user
+from app.router import post,vote,user,auth
 
-models.Base.metadata.create_all(bind=engine)
+# models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
