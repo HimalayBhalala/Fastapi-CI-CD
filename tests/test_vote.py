@@ -4,22 +4,6 @@ from app.models import Vote
 
 @pytest.fixture
 def test_vote(test_user, test_posts, session):
-    """
-    Fixture that creates and returns a vote instance.
-
-    This fixture sets up a vote for the first post in `test_posts` 
-    for the given `test_user`. The vote is added to the database 
-    and committed. This fixture can be used to test scenarios where
-    a user has already voted for a post.
-
-    Args:
-        test_user: The user to associate with the vote.
-        test_posts: The list of posts to choose from for the vote.
-        session: The database session used to add and commit the vote.
-
-    Returns:
-        Vote: The created vote instance.
-    """
     vote = Vote(post_id=test_posts[0].id, user_id=test_user.get('id'))
     session.add(vote)
     session.commit()
