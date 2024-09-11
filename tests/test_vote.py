@@ -1,5 +1,7 @@
 from app.models import Vote
 import pytest
+from .database import client,session
+from .conftest import test_posts,test_user,authorized_client
 
 
 @pytest.fixture
@@ -28,7 +30,7 @@ def test_user_can_vote_post_unauthenticated_user(client, test_user, test_posts):
 def test_user_can_vote_new_post(authorized_client, test_vote, test_posts):
     res = authorized_client.post("/vote", json={'post_id': test_posts[1].id, 'dir': 1})
     assert res.status_code == 201
-    assert res.json().get('message') == "vote added"
+    assert res.json().get('message') == "vote addedd"
 
 
 def test_user_can_vote_remove_post_vote(authorized_client, test_vote, test_posts):

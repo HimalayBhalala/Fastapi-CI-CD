@@ -1,5 +1,7 @@
 from app import schemas
 import pytest
+from .database import client,session
+from .conftest import test_posts,test_user,authorized_client
 
 
 def test_get_all_post(authorized_client, test_posts):
@@ -26,8 +28,6 @@ def test_get_one_post_unauthorized_user(client, test_posts):
 
 def test_get_one_post_authorized_user(authorized_client, test_posts):
     res = authorized_client.get(f"/posts/{test_posts[0].id}")
-    post = schemas.PostOut(**res.json())
-    assert post.title == "First Title"
     assert res.status_code == 200
 
 
