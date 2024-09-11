@@ -3,6 +3,7 @@ from datetime import datetime
 from typing import Optional
 from pydantic.types import conint
 
+
 class UserOut(BaseModel):
     id: int
     email: EmailStr
@@ -17,11 +18,14 @@ class PostBase(BaseModel):
     content: str
     published: bool = True
 
+
 class CreatePost(PostBase):
     pass
 
+
 class UpdatePost(PostBase):
     pass
+
 
 class GetPost(PostBase):
     id: int
@@ -31,6 +35,7 @@ class GetPost(PostBase):
 
     class Config:
         from_attributes = True
+
 
 class PostOut(BaseModel):
     Post: GetPost
@@ -43,6 +48,7 @@ class PostOut(BaseModel):
 class UserCreate(BaseModel):
     email: EmailStr
     password: str
+
 
 class UserLogin(BaseModel):
     email: EmailStr
@@ -61,3 +67,5 @@ class TokenData(BaseModel):
 class Vote(BaseModel):
     post_id: int
     dir: conint(le=1)
+
+    

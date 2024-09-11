@@ -1,10 +1,9 @@
-from fastapi import FastAPI, Response, status, HTTPException, Depends, APIRouter
+from fastapi import Response, status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
 from typing import List, Optional
 from sqlalchemy import func
 from .. import models, schemas, oauth
 from ..database import get_db
-
 
 router = APIRouter(
     prefix="/posts",
@@ -20,7 +19,7 @@ def get_posts(db: Session = Depends(get_db), current_user: int = Depends(oauth.g
     # cursor.execute("""SELECT * FROM posts """)
     # posts = cursor.fetchall()
 
-    # posts = db.execute(
+    # posts = db.execute(   
     #     'select posts.*, COUNT(votes.post_id) as votes from posts LEFT JOIN votes ON posts.id=votes.post_id  group by posts.id')
     # results = []
     # for post in posts:
@@ -104,7 +103,7 @@ def update_post(id: int, updated_post: schemas.UpdatePost, db: Session = Depends
 
     post = post_query.first()
 
-    if post == None:
+    if not post:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"post with id: {id} does not exist")
 
@@ -116,3 +115,4 @@ def update_post(id: int, updated_post: schemas.UpdatePost, db: Session = Depends
 
     db.commit()
     return post_query.first()
+

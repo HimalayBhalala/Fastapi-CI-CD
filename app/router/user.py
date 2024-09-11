@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Response, status, HTTPException, Depends, APIRouter
+from fastapi import status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
 from .. import models, schemas, utils
 from ..database import get_db
@@ -7,6 +7,7 @@ router = APIRouter(
     prefix="/users",
     tags=['Users']
 )
+
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.UserOut)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
@@ -30,3 +31,4 @@ def get_user(id: int, db: Session = Depends(get_db), ):
                             detail=f"User with id: {id} does not exist")
 
     return user
+

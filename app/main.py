@@ -1,6 +1,6 @@
-from fastapi import FastAPI,status
+from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
-from app.router import post,vote,user,auth
+from app.router import post, vote, user, auth
 
 # models.Base.metadata.create_all(bind=engine)
 
@@ -22,6 +22,7 @@ app.include_router(auth.router)
 app.include_router(vote.router)
 
 
-@app.get("/",status_code=status.HTTP_200_OK)
+@app.get("/", status_code=status.HTTP_200_OK)
 def hello():
     return {"message": "Hello World"}
+

@@ -1,7 +1,7 @@
 import pytest
 from app.oauth import create_access_token
-from .database import client, session 
 from app.models import Post
+
 
 @pytest.fixture
 def test_user(client):
@@ -17,6 +17,7 @@ def test_user(client):
     assert new_user['email'] == user_data['email'], "User email does not match"
     return new_user
 
+
 @pytest.fixture
 def test_user1(client):
     user_data = {
@@ -30,9 +31,11 @@ def test_user1(client):
     assert new_user['email'] == user_data['email'], "User email does not match"
     return new_user
 
+
 @pytest.fixture
 def test_token(test_user):
     return create_access_token({"user_id": test_user['id']})
+
 
 @pytest.fixture
 def authorized_client(client, test_token):
@@ -41,6 +44,7 @@ def authorized_client(client, test_token):
         "Authorization": f"Bearer {test_token}"
     }
     return client
+
 
 @pytest.fixture
 def test_posts(client,session,test_user,test_user1):
@@ -68,8 +72,7 @@ def test_posts(client,session,test_user,test_user1):
             "title": "Four Title",
             "content": "This is a very good post",
             "owner_id": test_user1.get("id")
-        },
-    ]
+        },]
 
     def create_user_post(post):
         return Post(**post)
@@ -81,3 +84,4 @@ def test_posts(client,session,test_user,test_user1):
     all_posts = session.query(Post).all()
 
     return all_posts
+
