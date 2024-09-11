@@ -8,6 +8,7 @@ load_dotenv()
 print("DATABASE_PORT:", os.getenv("DATABASE_PORT"))
 print("ACCESS_TOKEN_EXPIRE_MINUTES:", os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
 
+
 class AllSettings(BaseSettings):
     database_username: str
     database_name: str
@@ -21,5 +22,6 @@ class AllSettings(BaseSettings):
     class Config:
         env_file = ".env"
         env_file_encoding = 'utf-8'
+
 
 settings = AllSettings()
