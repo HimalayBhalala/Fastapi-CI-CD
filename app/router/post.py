@@ -10,6 +10,7 @@ router = APIRouter(
     tags=['Posts']
 )
 
+
 @router.get("/", response_model=List[schemas.PostOut])
 def get_posts(
     db: Session = Depends(get_db),
