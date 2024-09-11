@@ -1,10 +1,9 @@
-# config.py
 from pydantic_settings import BaseSettings
 from dotenv import load_dotenv
-import os
 
 # Load environment variables from .env file
 load_dotenv()
+
 
 class AllSettings(BaseSettings):
     database_username: str
@@ -19,5 +18,6 @@ class AllSettings(BaseSettings):
     class Config:
         env_file = ".env"
         env_file_encoding = 'utf-8'
+
 
 settings = AllSettings()
