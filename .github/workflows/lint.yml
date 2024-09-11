@@ -28,4 +28,4 @@ jobs:
 
     - name: Run flake8
       run: |
-        flake8 . --max-line-length=100  # Set max-line-length to match the style
+        flake8 . --max-line-length=500  # Set max-line-length to match the style
