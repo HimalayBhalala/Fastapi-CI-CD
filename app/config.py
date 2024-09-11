@@ -5,6 +5,7 @@ import os
 # Load environment variables from .env file
 load_dotenv()
 
+
 class AllSettings(BaseSettings):
     database_username: str
     database_name: str
@@ -34,6 +35,7 @@ class AllSettings(BaseSettings):
     class Config:
         env_file = ".env"
         env_file_encoding = 'utf-8'
+
 
 # Instantiate the settings object
 settings = AllSettings()
