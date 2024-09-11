@@ -5,7 +5,6 @@ import os
 # Load environment variables from .env file
 load_dotenv()
 
-
 class AllSettings(BaseSettings):
     database_username: str
     database_name: str
@@ -26,7 +25,7 @@ class AllSettings(BaseSettings):
             int(database_port)
         except (TypeError, ValueError):
             print(f"Invalid value for DATABASE_PORT: {database_port}")
-        
+
         try:
             int(access_token_expire_minutes)
         except (TypeError, ValueError):
@@ -35,7 +34,6 @@ class AllSettings(BaseSettings):
     class Config:
         env_file = ".env"
         env_file_encoding = 'utf-8'
-
 
 # Instantiate the settings object
 settings = AllSettings()
