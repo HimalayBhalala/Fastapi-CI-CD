@@ -1,6 +1,7 @@
 import pytest
 from app.oauth import create_access_token
 from app.models import Post
+from .database import client
 
 
 @pytest.fixture
