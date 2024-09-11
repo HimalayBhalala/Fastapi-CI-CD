@@ -1,7 +1,5 @@
 from app import schemas
 import pytest
-from .database import client,session
-from .conftest import test_posts,test_user,authorized_client
 
 
 def test_get_all_post(authorized_client, test_posts):

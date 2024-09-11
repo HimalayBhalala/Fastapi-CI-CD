@@ -2,7 +2,6 @@ from app import schemas
 from jose import jwt
 from app.config import settings
 import pytest
-from .database import client,session
 
 
 def test_hello(client, session):
