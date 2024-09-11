@@ -1,12 +1,4 @@
-""""create posts table
-
-Revision ID: ba2734a30549
-Revises: 
-Create Date: 2024-03-10 10:18:59.444274
-"""
-
 from typing import Sequence, Union
-
 from alembic import op
 import sqlalchemy as sa
 
